@@ -23,7 +23,6 @@ void Game::render() {
 	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
 	}
-
 	SDL_RenderPresent(m_pRenderer);
 }
 void Game::update() {
