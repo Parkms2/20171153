@@ -5,6 +5,7 @@
 #include"TextureManager.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"InputHandler.h"
 
 class Game {
 public:
@@ -14,6 +15,7 @@ public:
 	void update();
 	void handleEvents();
 	void clean();
+	void quit();
 	bool running() { return m_bRunning; }
 	static Game* Instance()
 	{
@@ -32,12 +34,7 @@ private:
 	bool m_bRunning;
 	static Game* s_pInstance;
 	int m_currentFrame;
-
 	std::vector<GameObject*> m_gameObjects;
-	GameObject* m_go;
-	GameObject* m_player;
-	GameObject* m_enemy;
-
 };
 
 typedef Game TheGame;

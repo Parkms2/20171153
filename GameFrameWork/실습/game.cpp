@@ -18,8 +18,6 @@ bool Game::init(const char*title, int xpos, int ypos, int width, int height, boo
 	return true;
 }
 
-
-
 void Game::render() {
 	SDL_RenderClear(m_pRenderer);
 	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
@@ -35,20 +33,15 @@ void Game::update() {
 
 }
 void Game::handleEvents() {
-	SDL_Event event;
-	if (SDL_PollEvent(&event)) {
-		switch (event.type) {
-		case SDL_QUIT:
-			m_bRunning = false;
-			break;
-		default:
-			break;
-		}
-	}
+	TheInputHandler::Instance()->update();
 }
 void Game::clean() {
 	std::cout << "cleaning game\n";
-	SDL_DestroyWindow(m_pWindow);
-	SDL_DestroyRenderer(m_pRenderer);
-	SDL_Quit();
+	TheInputHandler::Instance()->clean();
+	//SDL_DestroyWindow(m_pWindow);
+	//SDL_DestroyRenderer(m_pRenderer);
+	//SDL_Quit();
+}
+void Game::quit() {
+	m_bRunning = false;
 }
